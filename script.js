@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'images/17.jpg', hdSrc: 'images/hd/17.jpg', caption: 'Seventeenth Image' },
         { src: 'images/18.jpg', hdSrc: 'images/hd/18.jpg', caption: 'Eighteenth Image' },
         { src: 'images/19.jpg', hdSrc: 'images/hd/19.jpg', caption: 'Nineteenth Image' },
-        { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' },
+        { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' }
     ];
 
     let currentIndex = 0;
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
+    // Generate thumbnails
     images.forEach((image, index) => {
         const img = document.createElement('img');
         img.src = image.src;
@@ -42,11 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         gallery.appendChild(img);
     });
 
+    // Event listeners
     closeBtn.addEventListener('click', () => {
         overlay.classList.remove('show');
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 500);
+        setTimeout(() => overlay.style.display = 'none', 500);
     });
 
     prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
