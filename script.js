@@ -22,18 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' },
     ];
 
+    let currentIndex = 0;
+
     const gallery = document.getElementById('gallery');
     const overlay = document.getElementById('overlay');
     const largeImage = document.getElementById('large-image');
     const imageDetails = document.getElementById('image-details');
     const closeBtn = document.getElementById('close-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
 
-    images.forEach(image => {
+    images.forEach((image, index) => {
         const img = document.createElement('img');
         img.src = image.src;
         img.alt = image.caption;
         img.className = 'thumbnail';
-        img.addEventListener('click', () => showImage(image));
+        img.addEventListener('click', () => showImage(index));
         gallery.appendChild(img);
     });
 
@@ -41,7 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.display = 'none';
     });
 
-    function showImage(image) {
+    prevBtn.addEventListener('click', () => {
+        showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        showImage(currentIndex + 1);
+    });
+
+    function showImage(index) {
+        if (index < 0) {
+            index = images.length - 1;
+        } else if (index >= images.length) {
+            index = 0;
+        }
+        currentIndex = index;
+        const image = images[index];
         largeImage.src = image.hdSrc;
         largeImage.alt = image.caption;
         imageDetails.innerHTML = `<h2>${image.caption}</h2>`;
