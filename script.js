@@ -1,45 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.querySelector('.gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const captionText = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close');
+    const spinner = document.getElementById('spinner');
+
+    // Array of image objects
     const images = [
-        { filename: '1.jpg', description: 'Description of Image 1' },
-        { filename: '2.jpg', description: 'Description of Image 2' },
-        { filename: '3.jpg', description: 'Description of Image 3' },
-        { filename: '4.jpg', description: 'Description of Image 4' },
-        { filename: '5.jpg', description: 'Description of Image 5' },
-        { filename: '6.jpg', description: 'Description of Image 6' },
-        { filename: '7.jpg', description: 'Description of Image 7' },
-        { filename: '8.jpg', description: 'Description of Image 8' },
-        { filename: '9.jpg', description: 'Description of Image 9' },
-        { filename: '10.jpg', description: 'Description of Image 10' },
-        { filename: '11.jpg', description: 'Description of Image 11' },
-        { filename: '12.jpg', description: 'Description of Image 12' },
-        { filename: '13.jpg', description: 'Description of Image 13' },
-        { filename: '14.jpg', description: 'Description of Image 14' },
-        { filename: '15.jpg', description: 'Description of Image 15' },
-        { filename: '16.jpg', description: 'Description of Image 16' },
-        { filename: '17.jpg', description: 'Description of Image 17' },
-        { filename: '18.jpg', description: 'Description of Image 18' },
-        { filename: '19.jpg', description: 'Description of Image 19' },
-        { filename: '20.jpg', description: 'Description of Image 20' }
+        { src: 'images/1.jpg', hdSrc: 'images/hd/1.jpg', caption: 'First Image' },
+        { src: 'images/2.jpg', hdSrc: 'images/hd/2.jpg', caption: 'Second Image' },
+        { src: 'images/3.jpg', hdSrc: 'images/hd/3.jpg', caption: 'Third Image' },
+        { src: 'images/4.jpg', hdSrc: 'images/hd/4.jpg', caption: 'Fourth Image' },
+        { src: 'images/5.jpg', hdSrc: 'images/hd/5.jpg', caption: 'Fifth Image' },
+        { src: 'images/6.jpg', hdSrc: 'images/hd/6.jpg', caption: 'Sixth Image' },
+        { src: 'images/7.jpg', hdSrc: 'images/hd/7.jpg', caption: 'Seventh Image' },
+        { src: 'images/8.jpg', hdSrc: 'images/hd/8.jpg', caption: 'Eighth Image' },
+        { src: 'images/9.jpg', hdSrc: 'images/hd/9.jpg', caption: 'Ninth Image' },
+        { src: 'images/10.jpg', hdSrc: 'images/hd/10.jpg', caption: 'Tenth Image' },
+        { src: 'images/11.jpg', hdSrc: 'images/hd/11.jpg', caption: 'Eleventh Image' },
+        { src: 'images/12.jpg', hdSrc: 'images/hd/12.jpg', caption: 'Twelfth Image' },
+        { src: 'images/13.jpg', hdSrc: 'images/hd/13.jpg', caption: 'Thirteenth Image' },
+        { src: 'images/14.jpg', hdSrc: 'images/hd/14.jpg', caption: 'Fourteenth Image' },
+        { src: 'images/15.jpg', hdSrc: 'images/hd/15.jpg', caption: 'Fifteenth Image' },
+        { src: 'images/16.jpg', hdSrc: 'images/hd/16.jpg', caption: 'Sixteenth Image' },
+        { src: 'images/17.jpg', hdSrc: 'images/hd/17.jpg', caption: 'Seventeenth Image' },
+        { src: 'images/18.jpg', hdSrc: 'images/hd/18.jpg', caption: 'Eighteenth Image' },
+        { src: 'images/19.jpg', hdSrc: 'images/hd/19.jpg', caption: 'Nineteenth Image' },
+        { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' },
     ];
 
-    const gallery = document.querySelector('.gallery');
+    // Generate image elements
+    images.forEach((image) => {
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.caption;
+        img.dataset.hdSrc = image.hdSrc;
+        img.dataset.caption = image.caption;
+        gallery.appendChild(img);
 
-    // Function to create image elements and add them to the gallery
-    function populateGallery() {
-        images.forEach((image) => {
-            const img = document.createElement('img');
-            img.src = `images/${image.filename}`;
-            img.alt = image.description;
-            img.onclick = () => openImage(img.src);
-            gallery.appendChild(img);
+        img.addEventListener('click', () => {
+            spinner.style.display = 'block'; // Show spinner while image is loading
+            modal.style.display = 'block';
+            modalImg.src = image.hdSrc;
+            captionText.innerText = image.caption;
+            modalImg.classList.add('enlarged'); // Add class to enlarge image
+
+            // Hide spinner when image is loaded
+            modalImg.onload = () => {
+                spinner.style.display = 'none';
+            };
         });
-    }
+    });
 
-    // Function to open the image in a new tab/window
-    function openImage(imageUrl) {
-        window.open(imageUrl, '_blank');
-    }
+    // Close modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        modalImg.classList.remove('enlarged'); // Remove class when closing modal
+    });
 
-    // Populate the gallery when the page loads
-    populateGallery();
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            modalImg.classList.remove('enlarged'); // Remove class when closing modal
+        }
+    });
 });
