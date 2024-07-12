@@ -1,34 +1,52 @@
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0; /* Light gray background color */
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center;
+    height: 100vh;
 }
 
+/* Header Styles */
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+/* Gallery Styles */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
     padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #fff; /* White background for the gallery */
+    border-radius: 10px; /* Rounded corners for the gallery */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow around the gallery */
 }
 
+/* Image Styles */
 .gallery img {
     width: 100%;
     height: auto;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    object-fit: cover;
+    border-radius: 50%; /* Circular shape for images */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Hover Effect for Images */
 .gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
