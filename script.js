@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = image.src;
         img.alt = image.caption;
         img.className = 'thumbnail';
+        img.loading = 'lazy';
         img.addEventListener('click', () => showImage(index));
         gallery.appendChild(img);
     });
