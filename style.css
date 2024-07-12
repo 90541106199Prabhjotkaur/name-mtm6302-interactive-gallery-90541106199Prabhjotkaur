@@ -26,12 +26,12 @@ body {
     object-fit: cover;
     transition: transform 0.3s, box-shadow 0.3s;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .thumbnail:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
@@ -63,6 +63,10 @@ body {
     border-radius: 10px;
     overflow: hidden;
     animation: zoomIn 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes zoomIn {
@@ -96,15 +100,11 @@ body {
 .image-details {
     padding: 20px;
     text-align: center;
+    color: #fff;
 }
 
 .image-details h2 {
     margin: 0;
-}
-
-.image-details p {
-    margin: 10px 0 0;
-    color: #555;
 }
 
 .nav-btn {
