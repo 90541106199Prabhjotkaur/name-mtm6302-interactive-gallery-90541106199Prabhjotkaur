@@ -25,7 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     const gallery = document.getElementById('gallery');
-    const overlay = document.getElementById('overlay');
+    const overlay = document.createElement('div');
+    overlay.id = 'overlay';
+    overlay.className = 'overlay';
+    overlay.innerHTML = `
+        <div class="overlay-content">
+            <span id="close-btn" class="close-btn">&times;</span>
+            <img id="large-image" class="large-image" src="" alt="">
+            <div id="image-details" class="image-details"></div>
+            <button id="prev-btn" class="nav-btn">&lt;</button>
+            <button id="next-btn" class="nav-btn">&gt;</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
     const largeImage = document.getElementById('large-image');
     const imageDetails = document.getElementById('image-details');
     const closeBtn = document.getElementById('close-btn');
