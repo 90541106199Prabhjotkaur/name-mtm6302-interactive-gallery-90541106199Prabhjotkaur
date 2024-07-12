@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.querySelector('.gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const captionText = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close');
+
+    // Array of image objects
     const images = [
         { src: 'images/1.jpg', hdSrc: 'images/hd/1.jpg', caption: 'First Image' },
         { src: 'images/2.jpg', hdSrc: 'images/hd/2.jpg', caption: 'Second Image' },
@@ -19,51 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'images/17.jpg', hdSrc: 'images/hd/17.jpg', caption: 'Seventeenth Image' },
         { src: 'images/18.jpg', hdSrc: 'images/hd/18.jpg', caption: 'Eighteenth Image' },
         { src: 'images/19.jpg', hdSrc: 'images/hd/19.jpg', caption: 'Nineteenth Image' },
-        { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' }
+        { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' },
     ];
 
-    let currentIndex = 0;
-
-    const gallery = document.getElementById('gallery');
-    const overlay = document.getElementById('overlay');
-    const largeImage = document.getElementById('large-image');
-    const imageDetails = document.getElementById('image-details');
-    const closeBtn = document.getElementById('close-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // Generate thumbnails
-    images.forEach((image, index) => {
+    // Generate image elements
+    images.forEach((image) => {
         const img = document.createElement('img');
         img.src = image.src;
         img.alt = image.caption;
-        img.className = 'thumbnail';
-        img.loading = 'lazy';
-        img.addEventListener('click', () => showImage(index));
+        img.dataset.hdSrc = image.hdSrc;
+        img.dataset.caption = image.caption;
         gallery.appendChild(img);
+
+        img.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalImg.src = image.hdSrc;
+            captionText.innerText = image.caption;
+        });
     });
 
-    // Event listeners
+    // Close modal
     closeBtn.addEventListener('click', () => {
-        overlay.classList.remove('show');
-        setTimeout(() => overlay.style.display = 'none', 500);
+        modal.style.display = 'none';
     });
 
-    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
-    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
-
-    function showImage(index) {
-        if (index < 0) {
-            index = images.length - 1;
-        } else if (index >= images.length) {
-            index = 0;
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
-        currentIndex = index;
-        const image = images[index];
-        largeImage.src = image.hdSrc;
-        largeImage.alt = image.caption;
-        imageDetails.innerHTML = `<h2>${image.caption}</h2>`;
-        overlay.style.display = 'flex';
-        requestAnimationFrame(() => overlay.classList.add('show'));
-    }
+    });
 });
