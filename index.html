@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Gallery</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <div id="gallery" class ="gallery"></div>
-  <script src="script.js"></script>
+    <div class="gallery">
+        <img src="images/1.jpg" alt="placeholder image 1"> <img src="images/2.jpg" alt="placeholder image 2">
+        <img src="images/3.jpg" alt="placeholder image 3"> <img src="images/4.jpg" alt="placeholder image 4">
+        <img src="images/5.jpg" alt="placeholder image 5"> <img src="images/1.jpg" alt="placeholder image 1">
+        <img src="images/7.jpg" alt="placeholder image 7"> <img src="images/8.jpg" alt="placeholder image 8">
+        <img src="images/9.jpg" alt="placeholder image 9"> <img src="images/19.jpg" alt="placeholder image 19">
+        <img src="images/11.jpg"alt="placeholder image 11"> <img src="images/12.jpg" alt="placeholder image 12">
+        <img src="images/13.jpg" alt="placeholder image 13"> <img src="images/14.jpg" alt="placeholder image 14">
+        <img src="images/15.jpg" alt="placeholder image 15"> <img src="images/16.jpg" alt="placeholder image 16">
+        <img src="images/17.jpg" alt="placeholder image 17"> <img src="images/18.jpg" alt="placeholder image 18">
+        <img src="images/19.jpg" alt="placeholder image 19"> <img src="images/20.jpg" alt="placeholder image 20">
+
+    </div>
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="caption"></div>
+    </div>
+
+    <script src="scripts.js"></script> <!-- JavaScript for gallery functionality -->
 </body>
 </html>
