@@ -25,20 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     const gallery = document.getElementById('gallery');
-    const overlay = document.createElement('div');
-    overlay.id = 'overlay';
-    overlay.className = 'overlay';
-    overlay.innerHTML = `
-        <div class="overlay-content">
-            <span id="close-btn" class="close-btn">&times;</span>
-            <img id="large-image" class="large-image" src="" alt="">
-            <div id="image-details" class="image-details"></div>
-            <button id="prev-btn" class="nav-btn">&lt;</button>
-            <button id="next-btn" class="nav-btn">&gt;</button>
-        </div>
-    `;
-    document.body.appendChild(overlay);
-
+    const overlay = document.getElementById('overlay');
     const largeImage = document.getElementById('large-image');
     const imageDetails = document.getElementById('image-details');
     const closeBtn = document.getElementById('close-btn');
@@ -62,13 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     });
 
-    prevBtn.addEventListener('click', () => {
-        showImage(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        showImage(currentIndex + 1);
-    });
+    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
 
     function showImage(index) {
         if (index < 0) {
@@ -82,8 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         largeImage.alt = image.caption;
         imageDetails.innerHTML = `<h2>${image.caption}</h2>`;
         overlay.style.display = 'flex';
-        setTimeout(() => {
-            overlay.classList.add('show');
-        }, 10);
+        requestAnimationFrame(() => overlay.classList.add('show'));
     }
 });
