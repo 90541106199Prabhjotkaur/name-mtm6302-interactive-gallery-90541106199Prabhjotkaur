@@ -46,7 +46,13 @@ body {
     align-items: center;
     z-index: 1000;
     overflow: hidden;
+    opacity: 0;
     transition: opacity 0.5s;
+}
+
+.overlay.show {
+    display: flex;
+    opacity: 1;
 }
 
 .overlay-content {
