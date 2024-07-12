@@ -17,13 +17,15 @@ body {
     width: 100%;
     height: auto;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
     border-radius: 10px;
+    border: 4px solid transparent; /* Default border */
 }
 
 .gallery img:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 4px solid #3498db; /* Border color on hover */
 }
 
 .modal {
@@ -55,6 +57,7 @@ body {
     object-fit: contain;
     border-radius: 10px;
     transition: transform 0.3s ease;
+    border: 4px solid #fff; /* Border for modal image */
 }
 
 .modal-content.enlarged {
