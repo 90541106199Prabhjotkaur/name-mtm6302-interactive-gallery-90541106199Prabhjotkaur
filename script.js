@@ -43,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeBtn.addEventListener('click', () => {
-        overlay.style.display = 'none';
+        overlay.classList.remove('show');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 500);
     });
 
     prevBtn.addEventListener('click', () => {
@@ -66,5 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         largeImage.alt = image.caption;
         imageDetails.innerHTML = `<h2>${image.caption}</h2>`;
         overlay.style.display = 'flex';
+        setTimeout(() => {
+            overlay.classList.add('show');
+        }, 10);
     }
 });
