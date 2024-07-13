@@ -7,9 +7,9 @@ body {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 15px;
     transition: all 0.3s ease;
 }
 
@@ -17,26 +17,26 @@ body {
     width: 100%;
     height: auto;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-    border-radius: 10px;
-    border: 4px solid #ddd; /* Default border color */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    border-radius: 15px;
+    border: 5px solid #ddd; /* Default border color */
 }
 
 .gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     border-color: #3498db; /* Border color on hover */
 }
 
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     transition: opacity 0.3s ease;
 }
@@ -55,35 +55,38 @@ body {
     max-width: 90%;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    border: 4px solid #fff; /* Border color for modal image */
+    border-radius: 15px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 6px solid #fff; /* Border color for modal image */
 }
 
 .modal-content.enlarged {
     transform: scale(1.2); /* Adjust the scale as needed */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .caption {
     text-align: center;
     color: #fff;
-    font-size: 1.2em;
-    margin-top: 10px;
+    font-size: 1.4em;
+    margin-top: 15px;
     font-weight: bold;
+    transition: opacity 0.4s ease;
 }
 
 .close {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
     color: #fff;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .close:hover {
-    color: #ddd;
+    color: #f39c12;
 }
 
 .spinner {
@@ -94,8 +97,8 @@ body {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #3498db;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     animation: spin 1s linear infinite;
 }
 
