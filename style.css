@@ -1,37 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #f7f7f7;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gallery img {
     width: 100%;
     height: auto;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px;
+    border: 4px solid #e0e0e0;
 }
 
 .gallery img:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: #3498db;
 }
 
 #hd-image-container {
@@ -52,17 +54,18 @@ body {
     max-width: 90%;
     max-height: 80%;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease;
 }
 
 #caption {
     color: white;
-    margin-top: 10px;
-    font-size: 1.2rem;
+    margin-top: 15px;
+    font-size: 1.4rem;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
 }
 
 .close-btn {
@@ -70,9 +73,9 @@ body {
     top: 20px;
     right: 30px;
     color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .close-btn:hover {
