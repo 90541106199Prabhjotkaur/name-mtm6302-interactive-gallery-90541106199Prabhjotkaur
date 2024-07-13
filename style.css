@@ -10,7 +10,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
     padding: 15px;
-    background-color: #fff;
+    background-color: #fff; /* Background color for gallery */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -21,13 +21,13 @@ body {
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
     border-radius: 15px;
-    border: 5px solid #ddd;
+    border: 5px solid #ddd; /* Default border color */
 }
 
 .gallery img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    border-color: #3498db;
+    border-color: #3498db; /* Border color on hover */
 }
 
 .modal {
@@ -41,38 +41,42 @@ body {
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     transition: opacity 0.3s ease;
-    justify-content: center;
-    align-items: center;
 }
 
 .modal-content-wrapper {
     position: relative;
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    max-width: 100%;
-    max-height: 80vh;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
     object-fit: contain;
     border-radius: 15px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border: 6px solid #fff;
+    border: 6px solid #fff; /* Border color for modal image */
+    background-color: #fff; /* Background color for modal image area */
+    padding: 10px;
+}
+
+.modal-content.enlarged {
+    transform: scale(1.2); /* Adjust the scale as needed */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .caption {
     text-align: center;
-    color: #333;
+    color: #fff;
     font-size: 1.4em;
     margin-top: 15px;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.7); /* Background color for caption */
     padding: 10px;
     border-radius: 10px;
 }
@@ -81,7 +85,7 @@ body {
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #333;
+    color: #fff;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
