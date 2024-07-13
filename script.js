@@ -1,19 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.querySelector('.gallery');
-    const modal = document.createElement('div');
-    modal.id = 'hd-image-container';
-    modal.className = 'modal';
-    modal.innerHTML = `
-        <img id="hd-image" src="" alt="">
-        <div id="caption"></div>
-        <span class="close-btn">&times;</span>
-    `;
-    document.body.appendChild(modal);
-
-    const modalImg = document.getElementById('hd-image');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
     const captionText = document.getElementById('caption');
-    const closeBtn = document.querySelector('.close-btn');
+    const closeBtn = document.querySelector('.close');
+    const spinner = document.getElementById('spinner');
 
+    // Array of image objects
     const images = [
         { src: 'images/1.jpg', hdSrc: 'images/hd/1.jpg', caption: 'First Image' },
         { src: 'images/2.jpg', hdSrc: 'images/hd/2.jpg', caption: 'Second Image' },
@@ -21,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'images/20.jpg', hdSrc: 'images/hd/20.jpg', caption: 'Twentieth Image' },
     ];
 
+    // Generate image elements
     images.forEach((image) => {
         const img = document.createElement('img');
         img.src = image.src;
@@ -30,25 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
         gallery.appendChild(img);
 
         img.addEventListener('click', () => {
-            modal.style.display = 'flex';
+            spinner.style.display = 'block'; // Show spinner while image is loading
+            modal.style.display = 'block';
             modalImg.src = image.hdSrc;
             captionText.innerText = image.caption;
+            modalImg.classList.add('enlarged'); // Add class to enlarge image
+
+            // Hide spinner when image is loaded
+            modalImg.onload = () => {
+                spinner.style.display = 'none';
+            };
         });
     });
 
+    // Close modal
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
+        modalImg.classList.remove('enlarged'); // Remove class when closing modal
     });
 
+    // Close modal when clicking outside the image
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
-        }
-    });
-
-    window.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            modal.style.display = 'none';
+            modalImg.classList.remove('enlarged'); // Remove class when closing modal
         }
     });
 });
