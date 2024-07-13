@@ -10,7 +10,9 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
     padding: 15px;
-    transition: all 0.3s ease;
+    background-color: #fff; /* Background color for gallery */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .gallery img {
@@ -58,6 +60,8 @@ body {
     border-radius: 15px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 6px solid #fff; /* Border color for modal image */
+    background-color: #fff; /* Background color for modal image area */
+    padding: 10px;
 }
 
 .modal-content.enlarged {
@@ -72,6 +76,9 @@ body {
     margin-top: 15px;
     font-weight: bold;
     transition: opacity 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.7); /* Background color for caption */
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .close {
