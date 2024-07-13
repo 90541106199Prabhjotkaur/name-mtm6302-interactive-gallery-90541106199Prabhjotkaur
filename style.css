@@ -41,7 +41,6 @@ body {
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     transition: opacity 0.3s ease;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -49,19 +48,18 @@ body {
 .modal-content-wrapper {
     position: relative;
     width: 90%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
     background-color: #fff;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .modal-content {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 80vh;
     object-fit: contain;
     border-radius: 15px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -70,7 +68,7 @@ body {
 
 .caption {
     text-align: center;
-    color: #fff;
+    color: #333;
     font-size: 1.4em;
     margin-top: 15px;
     font-weight: bold;
@@ -83,7 +81,7 @@ body {
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #fff;
+    color: #333;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
