@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.querySelector('.gallery');
-    const modal = document.getElementById('modal');
+    const modal = document.createElement('div');
+    modal.id = 'modal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content-wrapper">
+            <img id="modal-img" class="modal-content" src="" alt="">
+            <span id="caption" class="caption"></span>
+            <span class="close">&times;</span>
+            <div id="spinner" class="spinner"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
     const modalImg = document.getElementById('modal-img');
     const captionText = document.getElementById('caption');
     const closeBtn = document.querySelector('.close');
@@ -25,14 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         img.addEventListener('click', () => {
             spinner.style.display = 'block'; // Show spinner while image is loading
-            modal.style.display = 'block';
+            modal.style.display = 'flex'; // Show the modal
             modalImg.src = image.hdSrc;
             captionText.innerText = image.caption;
-            modalImg.classList.add('enlarged'); // Add class to enlarge image
-
-            // Hide spinner when image is loaded
             modalImg.onload = () => {
-                spinner.style.display = 'none';
+                spinner.style.display = 'none'; // Hide spinner when image is loaded
             };
         });
     });
@@ -40,14 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
-        modalImg.classList.remove('enlarged'); // Remove class when closing modal
     });
 
     // Close modal when clicking outside the image
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
-            modalImg.classList.remove('enlarged'); // Remove class when closing modal
         }
     });
 });
